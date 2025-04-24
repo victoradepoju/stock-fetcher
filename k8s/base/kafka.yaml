@@ -1,0 +1,133 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    application: bank-of-anthos
+    environment: development
+    team: kafka
+    tier: backend
+  name: kafka
+  namespace: group4-ns
+spec:
+  serviceName: kafka
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka
+      application: bank-of-anthos
+      environment: development
+      team: kafka
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: kafka
+        application: bank-of-anthos
+        environment: development
+        team: kafka
+        tier: backend
+    spec:
+      containers:
+        - name: kafka
+          image: confluentinc/cp-kafka:7.3.0
+          env:
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              value: zookeeper:2181
+            - name: KAFKA_ADVERTISED_LISTENERS
+              value: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+            - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+              value: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+            - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+              value: "1"
+          ports:
+            - containerPort: 9092
+              name: kafka
+            - containerPort: 29092
+              name: kafka-external
+      serviceAccountName: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    application: bank-of-anthos
+    environment: development
+    team: kafka
+    tier: backend
+  name: kafka
+  namespace: group4-ns
+spec:
+  ports:
+    - port: 9092
+      name: kafka
+    - port: 29092
+      name: kafka-external
+  clusterIP: None
+  selector:
+    app: kafka
+    application: bank-of-anthos
+    environment: development
+    team: kafka
+    tier: backend
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    application: bank-of-anthos
+    environment: development
+    team: zookeeper
+    tier: backend
+  name: zookeeper
+  namespace: group4-ns
+spec:
+  serviceName: zookeeper
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zookeeper
+      application: bank-of-anthos
+      environment: development
+      team: zookeeper
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+        application: bank-of-anthos
+        environment: development
+        team: zookeeper
+        tier: backend
+    spec:
+      containers:
+        - name: zookeeper
+          image: confluentinc/cp-zookeeper:7.3.0
+          env:
+            - name: ZOOKEEPER_CLIENT_PORT
+              value: "2181"
+          ports:
+            - containerPort: 2181
+              name: zookeeper
+      serviceAccountName: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    application: bank-of-anthos
+    environment: development
+    team: zookeeper
+    tier: backend
+  name: zookeeper
+  namespace: group4-ns
+spec:
+  ports:
+    - port: 2181
+      name: zookeeper
+  clusterIP: None
+  selector:
+    app: zookeeper
+    application: bank-of-anthos
+    environment: development
+    team: zookeeper
+    tier: backend

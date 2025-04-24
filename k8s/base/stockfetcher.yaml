@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    application: bank-of-anthos
+    environment: development
+    team: stock-fetcher
+    tier: backend
+  name: stock-fetcher
+  namespace: group4-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-fetcher
+      application: bank-of-anthos
+      environment: development
+      team: stock-fetcher
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: stock-fetcher
+        application: bank-of-anthos
+        environment: development
+        team: stock-fetcher
+        tier: backend
+    spec:
+      containers:
+        - name: stock-fetcher
+          image: us-central1-docker.pkg.dev/dreamdev-team4/group4-repo/stock-fetcher:placeholder
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:9092
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/stockdb
+            - name: SPRING_DATASOURCE_USERNAME
+              value: stockuser
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: stockpass
+#            - name: APP_MARKETSTACK_API_KEY
+#              valueFrom:
+#                secretKeyRef:
+#                  name: marketstack-secret
+#                  key: api-key
+          ports:
+            - containerPort: 8081
+      serviceAccountName: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    application: bank-of-anthos
+    environment: development
+    team: stock-fetcher
+    tier: backend
+  name: stock-fetcher
+  namespace: group4-ns
+spec:
+  ports:
+    - port: 8081
+  selector:
+    app: stock-fetcher
+    application: bank-of-anthos
+    environment: development
+    team: stock-fetcher
+    tier: backend
+  type: ClusterIP
