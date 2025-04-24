@@ -9,7 +9,7 @@ spring:
       properties:
         spring.json.add.type.headers: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/stock-db
+    url: jdbc:postgresql://35.223.9.138:5432/stock-db
     username: stockuser
     password: stockpass
     driver-class-name: org.postgresql.Driver
