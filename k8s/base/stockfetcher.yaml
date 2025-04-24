@@ -33,11 +33,11 @@ spec:
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
               value: kafka:9092
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://35.223.9.138:5432/stock-db
+              value: jdbc:postgresql://35.223.9.138:5432/ledger-db
             - name: SPRING_DATASOURCE_USERNAME
-              value: stockuser
+              value: admin
             - name: SPRING_DATASOURCE_PASSWORD
-              value: stockpass
+              value: password
 #            - name: APP_MARKETSTACK_API_KEY
 #              valueFrom:
 #                secretKeyRef:

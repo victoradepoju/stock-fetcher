@@ -9,9 +9,9 @@ spring:
       properties:
         spring.json.add.type.headers: false
   datasource:
-    url: jdbc:postgresql://35.223.9.138:5432/stock-db
-    username: stockuser
-    password: stockpass
+    url: jdbc:postgresql://35.223.9.138:5432/ledger-db
+    username: admin
+    password: password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
