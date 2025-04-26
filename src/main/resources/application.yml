@@ -24,7 +24,7 @@ spring:
 app:
   marketstack:
     api-url: http://api.marketstack.com/v1/eod
-    api-key: 8d08077577437a1db9860b71b2516cac
+    api-key: 5dc4e83562d7fb0f3537137c04767b37
     symbols: AAPL,TSLA,MSFT,AMZN,GLD,USO
     limit: 72
   kafka:
