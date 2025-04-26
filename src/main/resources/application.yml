@@ -26,7 +26,7 @@ app:
     api-url: http://api.marketstack.com/v1/eod
     api-key: 8d08077577437a1db9860b71b2516cac
     symbols: AAPL,TSLA,MSFT,AMZN,GLD,USO
-    limit: 18
+    limit: 72
   kafka:
     topic: stock-prices
   scheduler:
