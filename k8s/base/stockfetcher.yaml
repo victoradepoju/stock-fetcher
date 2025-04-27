@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: stock-fetcher
-          image: us-central1-docker.pkg.dev/dreamdev-team4/group4-repo/stock-fetcher:placeholderss
+          image: us-central1-docker.pkg.dev/dreamdev-team4/group4-repo/stock-fetcher:placeholder
           env:
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
               value: kafka:9092
