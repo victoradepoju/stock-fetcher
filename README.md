@@ -11,37 +11,23 @@ The Stock Fetcher is a Spring Boot application that periodically fetches stock m
 - JSON serialization for Kafka messages
 
 ## Project Structure
-```
-stock-fetcher/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── group4/
-│   │   │           └── stock_fetcher/
-│   │   │               ├── config/
-│   │   │               │   └── KafkaProducerConfig.java
-│   │   │               ├── dto/
-│   │   │               │   ├── MarketStackResponse.java
-│   │   │               │   └── StockPriceData.java
-│   │   │               ├── model/
-│   │   │               │   ├── LastFetchTime.java
-│   │   │               │   └── StockPriceEvent.java
-│   │   │               ├── repository/
-│   │   │               │   └── LastFetchTimeRepository.java
-│   │   │               ├── service/
-│   │   │               │   ├── MarketStackClient.java
-│   │   │               │   └── StockPriceService.java
-│   │   │               └── StockFetcherApplication.java
-│   │   └── resources/
-│   │       └── application.yml
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── group4/
-│                   └── stock_fetcher/
-└── pom.xml
-```
+
+📦 stock-fetcher
+├── 📂 config
+│   └── 📄 KafkaProducerConfig.java
+├── 📂 dto
+│   ├── 📄 MarketStackResponse.java
+│   └── 📄 StockPriceData.java
+├── 📂 model
+│   ├── 📄 LastFetchTime.java
+│   └── 📄 StockPriceEvent.java
+├── 📂 repository
+│   └── 📄 LastFetchTimeRepository.java
+├── 📂 service
+│   ├── 📄 MarketStackClient.java
+│   └── 📄 StockPriceService.java
+└── 📄 StockFetcherApplication.java
+
 
 
 ## Components
