@@ -1,5 +1,10 @@
 # Stock Fetcher Project
 
+![Java](https://img.shields.io/badge/Java-17%2B-blue)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.1.0-green)
+![Kafka](https://img.shields.io/badge/Apache_Kafka-3.4.0-orange)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.0-blue)
+
 ## Overview
 The Stock Fetcher is a Spring Boot application that periodically fetches stock market data from the MarketStack API and publishes it to a Kafka topic. The application is designed to run on a schedule, fetch the latest stock prices, and send them as events to a Kafka broker for further processing by downstream services.
 
