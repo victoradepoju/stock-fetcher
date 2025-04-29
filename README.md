@@ -12,6 +12,7 @@ The Stock Fetcher is a Spring Boot application that periodically fetches stock m
 
 ## Project Structure
 
+```
 📦 stock-fetcher
 ├── 📂 config
 │   └── 📄 KafkaProducerConfig.java
@@ -27,7 +28,7 @@ The Stock Fetcher is a Spring Boot application that periodically fetches stock m
 │   ├── 📄 MarketStackClient.java
 │   └── 📄 StockPriceService.java
 └── 📄 StockFetcherApplication.java
-
+```
 
 
 ## Components
