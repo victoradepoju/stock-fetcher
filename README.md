@@ -65,6 +65,7 @@ Configures the Kafka producer with:
 ## Prerequisites
 - Java 17+
 - Apache Kafka
+- Zookeeper
 - MarketStack API key
 - PostgreSQL (or other JPA-compatible database)
 
